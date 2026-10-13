@@ -5,6 +5,7 @@ from django.shortcuts import render
 GIFTS = {
     "toria-8m-k7q2x9": {"template": "gifts/anniversary.html"},
     "winnie-3q-h8w5n2": {"template": "gifts/winnie.html"},
+    "sample-5k-d8h2v7": {"template": "gifts/sample.html"},
 }
 
 

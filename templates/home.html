@@ -111,6 +111,19 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
 .pgbar{position:absolute;left:0;right:0;bottom:0;height:5px;background:rgba(255,255,255,.35);z-index:4}
 .pgbar i{display:block;height:100%;background:var(--hot);transform-origin:left;transform:scaleX(0)}
 .stage{padding-bottom:30px}
+
+.sample{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;width:min(300px,78vw);aspect-ratio:3/4;padding:26px;border-radius:30px;text-decoration:none;color:#fbe8de;background:radial-gradient(120% 90% at 70% 0%,#5a1f34,#1a0a14 70%);box-shadow:0 30px 70px rgba(80,15,50,.45);overflow:hidden;transition:transform .5s var(--ease),box-shadow .5s;z-index:1}
+.sample:hover,.sample:focus-visible{transform:translateY(-6px) rotate(-1deg);box-shadow:0 40px 90px rgba(80,15,50,.55)}
+.sample:focus-visible{outline:3px solid var(--hot);outline-offset:4px}
+.sample .sg{position:absolute;width:260px;height:260px;border-radius:50%;right:-80px;top:-70px;background:radial-gradient(circle,rgba(255,155,94,.55),transparent 68%);animation:sbreath 6s ease-in-out infinite}
+@keyframes sbreath{50%{transform:scale(1.2);opacity:.7}}
+.sample .sk{position:relative;font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:#e8c07a}
+.sample .st{position:relative;font-family:Georgia,'Times New Roman',serif;font-style:italic;font-weight:400;font-size:2.4rem;line-height:1.02;letter-spacing:-.02em}
+.sample .st em{color:#ff9b5e}
+.sample .sp{position:relative;font-size:.92rem;line-height:1.5;color:#d6b4b2}
+.sample .sb{position:relative;margin-top:6px;display:inline-flex;align-items:center;gap:8px;align-self:flex-start;padding:10px 18px;border-radius:99px;background:#fbe8de;color:#3a1020;font-weight:700;font-size:.9rem}
+.sample .sb i{font-style:normal;transition:transform .4s var(--ease)}
+.sample:hover .sb i{transform:translateX(4px)}
 /* packages bento */
 .bento{margin-top:48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:280px 280px 280px;gap:18px}
 .pk{position:relative;border-radius:30px;overflow:hidden;box-shadow:0 18px 40px rgba(120,30,70,.2);background:#fff}
@@ -186,17 +199,14 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
     <div class="sh c" style="margin-bottom:48px"><h2 id="digh">Digital <em>gifts</em></h2><p>Gifts they open on their phone, made from your photos, videos, words and favourite song. One private link you can send on WhatsApp, never shown in search.</p><span class="tag"><i></i>Launching 7 November 2026</span></div>
     <div class="dgrid">
       <div class="dside"><div class="dt"><div class="di"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div><div><h3>Gift websites</h3><p>An interactive gift that feels like a small app, with your story, photos, videos, words and song.</p></div></div></div>
-      <div class="stage" aria-label="A personal digital gift, shown as a full video">
-        <div class="phone">
-          <div class="screen" id="screen">
-            <img class="poster" src="{% static 'home/poster.jpg' %}" alt="A NOLAP GIFTS digital gift on a phone">
-            <video id="demo" src="{% static 'home/demo.mp4' %}" poster="{% static 'home/poster.jpg' %}" muted loop playsinline preload="none"></video>
-            <div class="pgbar"><i id="pg"></i></div>
-            <button class="play" id="playdemo" type="button" aria-label="Play the digital gift"><b>&#9654;</b><span>Play the digital gift</span></button>
-          </div>
-          <img class="bezel" src="{% static 'gifts/iphone.png' %}" alt="" aria-hidden="true">
-        </div>
-        <span class="live-chip"><i></i>Live preview &middot; 3&times; speed</span>
+      <div class="stage">
+        <a class="sample" href="/g/sample-5k-d8h2v7/" aria-label="Open a sample gift">
+          <span class="sg"></span>
+          <span class="sk">Sample gift</span>
+          <span class="st">Beautiful,<br><em>slow down.</em></span>
+          <span class="sp">A short, animated love letter with photos, words and a song.</span>
+          <span class="sb">See a sample <i>&rarr;</i></span>
+        </a>
       </div>
       <div class="dside"><div class="dt"><div class="di"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9l5 3-5 3z"/></svg></div><div><h3>Animated videos</h3><p>A beautifully animated film made from your photos, words and music, ready to share on any phone.</p></div></div></div>
     </div>
@@ -232,15 +242,6 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
   h.innerHTML=html;
 
   document.documentElement.classList.add('js');
-
-  /* demo video: plays (muted, looping) only while it is on screen */
-  var sc=document.getElementById('screen'),v=document.getElementById('demo'),pb=document.getElementById('playdemo'),inView=false;
-  function shown(){sc.classList.add('is-playing');sc.classList.remove('blocked')}
-  v.addEventListener('playing',shown);v.addEventListener('timeupdate',function(){if(v.currentTime>0&&!v.paused)shown()});
-  function startDemo(){var p=v.play();if(p&&p.catch)p.catch(function(){sc.classList.add('blocked')})}
-  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){inView=e.isIntersecting;if(inView)startDemo();else v.pause()})},{threshold:.25}).observe(sc)}else{startDemo()}
-  pb.addEventListener('click',function(){v.muted=true;startDemo()});
-  document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(inView)startDemo()});
 
   /* the full song: tries to start at once, otherwise on the first tap */
   var song=document.getElementById('song'),chip=document.getElementById('soundchip'),hint=document.getElementById('hint'),on=false,wanted=true,fade=null;
