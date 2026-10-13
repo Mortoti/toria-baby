@@ -42,9 +42,9 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
 
 /* header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:22px}
-.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.14em;font-size:15px}
-.mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(160deg,#cf5580,#a52f5c);display:grid;place-items:center;box-shadow:.4rem .5rem 1.1rem rgba(140,30,80,.4),inset 0 1px 0 rgba(255,255,255,.35)}
-.mark img{width:26px;height:26px;display:block}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.14em;font-size:15px;white-space:nowrap;min-width:0}
+.mark{flex:none;width:46px;height:46px;aspect-ratio:1;border-radius:14px;background:linear-gradient(160deg,#cf5580,#a52f5c);display:grid;place-items:center;box-shadow:.4rem .5rem 1.1rem rgba(140,30,80,.4),inset 0 1px 0 rgba(255,255,255,.35)}
+.mark img{width:26px;height:26px;display:block;object-fit:contain;flex:none}
 .pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:600;font-size:13px;letter-spacing:.06em;white-space:nowrap}
 .pill i{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 0 rgba(238,111,147,.6);animation:ping 1.8s infinite}
 @keyframes ping{70%{box-shadow:0 0 0 10px rgba(238,111,147,0)}100%{box-shadow:0 0 0 0 rgba(238,111,147,0)}}
@@ -119,11 +119,12 @@ h1 em{font-style:normal;color:var(--hot)}
 .foot{position:relative;z-index:1;padding:34px 20px 44px;text-align:center}
 .pow{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 14px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:500;font-size:14px}
 .pow .mark{width:36px;height:36px;border-radius:11px}.pow .mark img{width:20px;height:20px}
+.pow{max-width:100%}
 .pow b{font-weight:700;letter-spacing:.1em}
 .copy{margin-top:16px;font-size:13px;color:rgba(106,27,64,.65)}
 
 @media (max-width:1100px){.ocgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:600px){.chip span{display:none}.chip{padding:9px}.ocgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.oc{padding:18px 16px}.top{gap:8px}}
+@media (max-width:600px){.top{padding-block:16px}.brand{font-size:12.5px;letter-spacing:.09em;gap:9px}.mark{width:40px;height:40px;border-radius:12px}.mark img{width:22px;height:22px}.hr{gap:8px}.pill{padding:8px 12px;font-size:12px;gap:7px}.chip span{display:none}.chip{padding:7px}.ocgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.oc{padding:18px 16px}.top{gap:8px}}
 @media (max-width:900px){
   .hero{grid-template-columns:minmax(0,1fr);gap:24px;padding-top:8px}
   .copy-col{text-align:center}.lede{margin-inline:auto}.count{margin-inline:auto}
@@ -164,12 +165,12 @@ h1 em{font-style:normal;color:var(--hot)}
       <p class="when rv" style="--d:1.3s">Saturday, 7 November 2026</p>
     </section>
 
-    <section class="stage rv" style="--d:.5s" aria-label="A real gift, shown in a 20 second demo">
+    <section class="stage rv" style="--d:.5s" aria-label="A real gift, shown as a full video">
       <div class="phone">
         <div class="screen" id="screen">
           <img class="poster" src="{% static 'home/poster.jpg' %}" alt="A NOLAP GIFTS gift on a phone">
           <video id="demo" src="{% static 'home/demo.mp4' %}" poster="{% static 'home/poster.jpg' %}" autoplay muted loop playsinline preload="auto"></video>
-          <button class="play" id="playdemo" type="button" aria-label="Play the demo"><b>&#9654;</b><span>Play demo</span></button>
+          <button class="play" id="playdemo" type="button" aria-label="Play the gift"><b>&#9654;</b><span>Play the gift</span></button>
         </div>
         <img class="bezel" src="{% static 'gifts/iphone.png' %}" alt="" aria-hidden="true">
       </div>
@@ -210,9 +211,12 @@ h1 em{font-style:normal;color:var(--hot)}
 
   /* demo: muted, autoplaying, looping. If a browser blocks it, show a play button */
   var sc=document.getElementById('screen'),v=document.getElementById('demo'),pb=document.getElementById('playdemo');
-  v.addEventListener('playing',function(){sc.classList.add('is-playing');sc.classList.remove('blocked')});
+  function shown(){sc.classList.add('is-playing');sc.classList.remove('blocked')}
+  v.addEventListener('playing',shown);v.addEventListener('timeupdate',function(){if(v.currentTime>0&&!v.paused)shown()});
+  if(!v.paused&&v.readyState>=3)shown();   /* autoplay can start before this script runs */
   function startDemo(){var p=v.play();if(p&&p.catch)p.catch(function(){sc.classList.add('blocked')})}
   startDemo();
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(v.paused&&!sc.classList.contains('blocked'))startDemo()}else{v.pause()}})},{threshold:.2}).observe(sc)}
   pb.addEventListener('click',function(){v.muted=true;startDemo()});
   document.addEventListener('visibilitychange',function(){if(!document.hidden&&v.paused)startDemo()});
 

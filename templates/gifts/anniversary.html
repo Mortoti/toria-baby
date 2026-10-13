@@ -533,11 +533,15 @@ byId('s19').tick=function(T){if((st.k||0)>=2&&T-(st.fw||0)>1.8){st.fw=T;burst(W*
 /* the video scene: sizes its frame to the video so nothing is cropped */
 (function(){
   var s=byId('s10'),v=s.el.querySelector('video'),f=s.el.querySelector('.vframe');
-  v.addEventListener('loadeddata',function(){f.classList.add('hasvid')});
-  v.addEventListener('loadedmetadata',function(){
+  function ok(){f.classList.add('hasvid')}
+  function meta(){
     if(isFinite(v.duration))s.dur=Math.min(Math.max(v.duration+2,8),40);
     if(v.videoWidth&&v.videoHeight){var r=v.videoWidth/v.videoHeight,w=Math.min(72,82*r);f.style.width=w+'cqw';f.style.height=(w/r)+'cqw'}
-  });
+  }
+  v.addEventListener('loadedmetadata',meta);
+  v.addEventListener('loadeddata',ok);v.addEventListener('canplay',ok);
+  if(v.readyState>=1)meta();   /* the clip can finish loading before this script runs */
+  if(v.readyState>=2)ok();
   s.enter=function(){if(f.classList.contains('hasvid')){try{v.currentTime=0}catch(e){}var p=v.play();if(p&&p.catch)p.catch(function(){})}};
   s.leave=function(){v.pause()};
 })();
