@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <meta name="theme-color" content="#1a0a14">
-<title>Winnie, Slow Down</title>
+<title>Happy Birthday Winnie</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600&display=swap">
 <style>
 /* Concept: a love letter told as an animated film. Nine full-screen scenes, each with its own motion graphics, joined by animated wipes (iris, curtain, heart, bars). Written by a Financial Secretary, so the ledger sheet and the jollof voucher are the two physical objects. Single committed dark look. */
@@ -69,6 +69,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .title{font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(4rem,19vw,10.5rem);line-height:.98;letter-spacing:-.03em;margin-top:22px}
 .title .l1,.title .l2{display:block;white-space:nowrap}
 .title .l1{color:var(--ember);text-shadow:0 0 60px rgba(255,155,94,.45)}
+.title .l1{font-size:min(.74em,12.6vw)}
+.title .l2{margin-top:.04em}
 .ch{display:inline-block;opacity:0;transform:translateY(60px) rotate(-14deg) scale(.4)}
 .slide.active .ch{animation:chin 1s var(--spring) forwards;animation-delay:calc(.4s + var(--k)*.08s)}
 @keyframes chin{to{opacity:1;transform:none}}
@@ -220,6 +222,26 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .slide.active .again{animation:popin .8s var(--ease) 7.4s forwards}
 .foot{display:none;position:fixed;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:30;text-align:center;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);opacity:.55;pointer-events:none}
 
+
+.s-wish{--sbg:radial-gradient(120% 90% at 50% 100%,#5a1c22,#26101f 55%,#1a0a14)}
+.balloons{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.balloons i{position:absolute;left:var(--x);bottom:-120px;width:46px;height:58px;border-radius:50% 50% 48% 48%;background:radial-gradient(circle at 35% 30%,rgba(255,255,255,.55),var(--c) 45%);opacity:0;box-shadow:inset -6px -8px 14px rgba(0,0,0,.18)}
+.balloons i::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:90px;background:rgba(251,232,222,.4);transform-origin:top;animation:string 3s ease-in-out infinite}
+.slide.active .balloons i{animation:float var(--t) ease-in infinite;animation-delay:var(--d)}
+@keyframes float{0%{transform:translate(0,0);opacity:0}8%{opacity:.9}50%{transform:translate(18px,-55vh)}100%{transform:translate(-14px,-125vh);opacity:.9}}
+@keyframes string{50%{transform:skewX(8deg)}}
+.cake{width:min(280px,64vw);margin:clamp(10px,2svh,22px) auto 0}
+.cake svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 20px 30px rgba(0,0,0,.5))}
+.flame{fill:#ffcf6a;stroke:#ff8a3a;stroke-width:2;transform-origin:0 30px;animation:flick .5s ease-in-out infinite alternate;animation-delay:var(--f,0s);filter:drop-shadow(0 0 10px rgba(255,170,60,.95))}
+@keyframes flick{from{transform:scale(1,1) rotate(-3deg)}to{transform:scale(.88,1.12) rotate(3deg)}}
+.smoke{fill:none;stroke:rgba(255,255,255,.7);stroke-width:3;stroke-linecap:round;stroke-dasharray:40;stroke-dashoffset:40;opacity:0}
+.cake.out .flame{animation:none;transform:scale(0);transition:transform .35s ease-in;filter:none}
+.cake.out .smoke{animation:smoke 2.2s ease-out forwards}
+@keyframes smoke{0%{stroke-dashoffset:40;opacity:.9}100%{stroke-dashoffset:-30;opacity:0;transform:translateY(-30px)}}
+.wishrow{margin-top:clamp(14px,3svh,26px);text-align:center;display:grid;justify-items:center;gap:14px}
+.after{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,.9rem + 1.4vw,1.6rem);line-height:1.35;max-width:26em;opacity:0;transform:translateY(14px);transition:opacity 1s .5s,transform 1s .5s}
+.after.show{opacity:1;transform:none}
+.wishrow .again.gone{opacity:0!important;pointer-events:none;transition:opacity .4s}
 /* ---------- chrome ---------- */
 .chip{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:70;display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:99px;border:1px solid rgba(232,192,122,.4);background:rgba(26,10,20,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font:600 13px var(--sans);cursor:pointer}
 .chip i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(232,192,122,.2);color:var(--gold);font-size:11px}
@@ -274,41 +296,42 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   <!-- 0 -->
   <section class="slide s-0" data-fx="cover">
     <div class="glow" style="--gx:70%;--gy:25%"></div>
-    <svg class="ring" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="circ" d="M200 200m-170 0a170 170 0 1 1 340 0a170 170 0 1 1-340 0"/></defs><text><textPath href="#circ">for Winnie · slow down · read it slowly · for Winnie · slow down · read it slowly ·</textPath></text></svg>
+    <svg class="ring" viewBox="0 0 400 400" aria-hidden="true"><defs><path id="circ" d="M200 200m-170 0a170 170 0 1 1 340 0a170 170 0 1 1-340 0"/></defs><text><textPath href="#circ">happy birthday · Winnie · make a wish · happy birthday · Winnie · make a wish ·</textPath></text></svg>
+    <div class="balloons" aria-hidden="true"><i style="--x:8%;--c:#f4622b;--d:0s;--t:11s"></i><i style="--x:24%;--c:#f6a9bc;--d:2.5s;--t:13s"></i><i style="--x:70%;--c:#e8c07a;--d:1.2s;--t:12s"></i><i style="--x:86%;--c:#e8485f;--d:3.4s;--t:14s"></i><i style="--x:50%;--c:#ffb35a;--d:5s;--t:12.5s"></i></div>
     <div class="inner">
-      <p class="for pop" style="--d:.2s">For Winnifred</p>
-      <h1 class="title"><span class="l1" data-letters>Winnie,</span><span class="l2" data-letters>slow down.</span></h1>
-      <p class="sub kt pop" style="--d:2.4s;--base:2.4s">I know you. You're about to swipe straight to the end. <b>Don't.</b> Every line on here is true, so read it like you believe me.</p>
+      <p class="for pop" style="--d:.2s">For Winnifred, today</p>
+      <h1 class="title"><span class="l1" data-letters>Happy birthday,</span><span class="l2" data-letters>Winnie.</span></h1>
+      <p class="sub kt pop" style="--d:2.4s;--base:2.4s">Today belongs to you, so I will try to be brief. <b>Swipe up slowly.</b> There is a lot to unwrap.</p>
     </div>
   </section>
 
-  <!-- 1 photo -->
+  <!-- 1 -->
   <section class="slide s-photo s-1">
     <div class="bgph"><img src="{% static 'gifts/winnie/p1.jpg' %}" alt="Winnie"></div>
     <div class="pic-hearts" aria-hidden="true"><i style="left:14%;--j:0;--s:14px;--dx:24px"></i><i style="left:78%;--j:1;--s:20px;--c:#ff9b5e;--dx:-30px"></i><i style="left:40%;--j:2;--s:12px;--dx:18px"></i><i style="left:88%;--j:3;--s:16px;--dx:-14px"></i><i style="left:58%;--j:4;--s:22px;--c:#ffd0a8;--dx:30px"></i></div>
     <div class="inner"><div class="verse kt">
-      <p>Let me start small.</p>
-      <p>You are beautiful, and I think you already know it.</p>
-      <p>But it is more than that. Something about you makes me want to be better, and a little braver.</p>
-      <p class="big">You are not even trying. <em>That is the dangerous part.</em></p>
+      <p>One more year, and the world is lucky to have you for it.</p>
+      <p>Some people make a day brighter just by being in it. You are one of them.</p>
+      <p>And today, of all days, I want you to know that.</p>
+      <p class="big">Happy birthday, Winnie. <em>You are the gift.</em></p>
     </div></div>
   </section>
 
-  <!-- 2 laugh -->
+  <!-- 2 -->
   <section class="slide s-2">
     <div class="glow" style="--gx:80%;--gy:80%;--g:rgba(246,169,188,.22)"></div>
     <div class="has" aria-hidden="true"><span style="--j:0">ha</span><span style="--j:1">ha</span><span style="--j:2">ha</span></div>
     <div class="inner" style="max-width:620px"><div class="verse kt">
-      <p>Here is my problem, Winnie.</p>
-      <p>Every time I say I like you, you laugh.</p>
-      <p class="soft">It is a good laugh. I would pay money to hear it. But I mean it every time, and it is hard to say a serious thing to someone who thinks you are being funny.</p>
-      <p class="big">So I wrote it down. <em>You can't laugh a page away.</em></p>
+      <p>Here is a small secret, Winnie.</p>
+      <p>Every time I tell you how I feel, you laugh.</p>
+      <p class="soft">I love that laugh. So today there is no pressure and no answer needed. Just a birthday wish that happens to be completely true.</p>
+      <p class="big">Laugh if you want. <em>I mean it anyway.</em></p>
     </div>
     <svg class="pen" viewBox="0 0 360 22" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14C60 4 120 20 180 10S300 6 356 12"/></svg>
-    <span class="note pop" style="--d:5s">(you can try)</span></div>
+    <span class="note pop" style="--d:5s">(go on, laugh)</span></div>
   </section>
 
-  <!-- 3 video -->
+  <!-- 3 -->
   <section class="slide s-3">
     <div class="glow" style="--gx:30%;--gy:50%"></div>
     <div class="inner">
@@ -321,38 +344,38 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       </div>
       <div class="verse kt" style="--base:1.4s">
         <p>Eight seconds of you.</p>
-        <p class="soft">I have watched it more times than I will say out loud. At this point it should be in the books as a recurring expense.</p>
+        <p class="soft">I could watch it again and again. At this point it should be in the books as a recurring expense.</p>
         <p class="big">Worth every <em>pesewa.</em></p>
         <div class="eq pop" style="--d:3s" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
     </div>
   </section>
 
-  <!-- 4 ledger -->
+  <!-- 4 -->
   <section class="slide s-4">
     <div class="glow" style="--gx:50%;--gy:20%;--g:rgba(232,192,122,.18)"></div>
     <div class="inner">
       <div class="verse kt lead">
-        <p>At NOLAP, I count other people's money.</p>
-        <p class="big">The only thing I have ever <em>overspent</em> on is you.</p>
+        <p>At NOLAP, I look after other people's money.</p>
+        <p class="big">Today I looked after <em>your wishes</em> instead.</p>
       </div>
       <div class="sheet" id="sheet">
-        <h2>Statement of account</h2>
+        <h2>Birthday wishes, itemised</h2>
         <p class="by">Prepared by the Financial Secretary, for W. only</p>
         <div class="rows">
-          <div class="row" style="--r:0"><span>Texts typed, deleted, typed again</span><i></i><b><span data-count="112">112</span></b></div>
-          <div class="row" style="--r:1"><span>Nights awake for one reply</span><i></i><b><span data-count="31">31</span></b></div>
-          <div class="row" style="--r:2"><span>Times I said I like you</span><i></i><b>lost count</b></div>
-          <div class="row" style="--r:3"><span>Times you laughed it off</span><i></i><b>every one</b></div>
-          <div class="row" style="--r:4"><span>Regrets</span><i></i><b>0</b></div>
-          <div class="row total" style="--r:5"><span>Balance</span><i></i><b>all of me</b></div>
+          <div class="row" style="--r:0"><span>Happiness</span><i></i><b>paid in full</b></div>
+          <div class="row" style="--r:1"><span>Good health</span><i></i><b>fully funded</b></div>
+          <div class="row" style="--r:2"><span>Peace of mind</span><i></i><b>no limit</b></div>
+          <div class="row" style="--r:3"><span>Laughter</span><i></i><b>every single day</b></div>
+          <div class="row" style="--r:4"><span>Jollof</span><i></i><b>unlimited</b></div>
+          <div class="row total" style="--r:5"><span>Balance</span><i></i><b>your best year yet</b></div>
         </div>
-        <div class="stamp" id="stamp">Audited<br>&amp; meant</div>
+        <div class="stamp" id="stamp">Approved<br>&amp; wished</div>
       </div>
     </div>
   </section>
 
-  <!-- 5 photo 2 -->
+  <!-- 5 -->
   <section class="slide s-photo r s-5">
     <div class="bgph"><img src="{% static 'gifts/winnie/p2.jpg' %}" alt="Winnie in a bonnet, resting her face in her hands" style="object-position:50% 30%"></div>
     <svg class="moon" viewBox="0 0 100 100" aria-hidden="true"><path d="M62 8A42 42 0 1 0 92 66 34 34 0 0 1 62 8z"/></svg>
@@ -366,32 +389,59 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div></div>
   </section>
 
-  <!-- 6 jollof -->
+  <!-- 6 -->
+<section class="slide s-wish">
+    <div class="glow" style="--gx:50%;--gy:55%;--g:rgba(255,155,94,.35)"></div>
+    <div class="inner">
+      <div class="verse kt" style="max-width:560px;margin:0 auto;text-align:center">
+        <p>Before the jollof, one more thing.</p>
+        <p class="big">Make a wish, <em>Winnie.</em></p>
+      </div>
+      <div class="cake pop" style="--d:2s" id="cake">
+        <svg viewBox="0 0 240 200" aria-hidden="true">
+          <g class="candles">
+            <g transform="translate(70,40)"><rect x="-4" y="30" width="8" height="42" rx="2" fill="#fbe8de"/><path class="flame" d="M0 0C-9 12-9 26 0 30 9 26 9 12 0 0Z"/><path class="smoke" d="M0 28C-8 14 8 8 0-6"/></g>
+            <g transform="translate(105,32)"><rect x="-4" y="30" width="8" height="46" rx="2" fill="#f6a9bc"/><path class="flame" d="M0 0C-9 12-9 26 0 30 9 26 9 12 0 0Z" style="--f:.3s"/><path class="smoke" d="M0 28C-8 14 8 8 0-6"/></g>
+            <g transform="translate(140,32)"><rect x="-4" y="30" width="8" height="46" rx="2" fill="#e8c07a"/><path class="flame" d="M0 0C-9 12-9 26 0 30 9 26 9 12 0 0Z" style="--f:.6s"/><path class="smoke" d="M0 28C-8 14 8 8 0-6"/></g>
+            <g transform="translate(175,40)"><rect x="-4" y="30" width="8" height="42" rx="2" fill="#fbe8de"/><path class="flame" d="M0 0C-9 12-9 26 0 30 9 26 9 12 0 0Z" style="--f:.9s"/><path class="smoke" d="M0 28C-8 14 8 8 0-6"/></g>
+          </g>
+          <rect x="34" y="104" width="172" height="46" rx="10" fill="#f6a9bc"/>
+          <path d="M34 120q14 14 28 0t28 0 28 0 28 0 28 0 28 0" fill="none" stroke="#fbe8de" stroke-width="7" stroke-linecap="round"/>
+          <rect x="18" y="146" width="204" height="46" rx="12" fill="#fbe8de"/>
+          <path d="M18 162q17 14 34 0t34 0 34 0 34 0 34 0 34 0" fill="none" stroke="#f4622b" stroke-width="6" stroke-linecap="round" opacity=".85"/>
+        </svg>
+      </div>
+      <div class="wishrow"><button class="again" id="blow" type="button" style="opacity:1;animation:none">&#127874;&nbsp; Blow out the candles</button>
+      <p class="after" id="after">Whatever you wished for, I hope it comes true. And if I am in it, even better.</p></div>
+    </div>
+  </section>
+  <!-- 7 -->
   <section class="slide s-6">
     <div class="glow" style="--gx:50%;--gy:35%;--g:rgba(244,98,43,.38)"></div>
     <div class="inner">
       <div class="plate-wrap"><svg class="steam" viewBox="0 0 200 110" aria-hidden="true"><path d="M60 105C40 80 80 60 60 30"/><path d="M100 105C80 75 120 55 100 20"/><path d="M140 105C120 80 160 60 140 30"/></svg><img class="plate" src="{% static 'gifts/winnie/jollof.jpg' %}" alt="A pot of smoky party jollof rice"><span class="exh">exhibit A</span></div>
       <div class="verse kt" style="--base:1.6s">
-        <p>Now, business.</p>
-        <p>I have seen your face when a good plate of jollof lands on the table. You go quiet. Serious. Holy.</p>
-        <p class="big">That is the same face <em>I make when you text back.</em></p>
+        <p>Now, your birthday gift.</p>
+        <p>A proper plate of jollof, because a birthday without jollof is just another day.</p>
+        <p class="big">And I know you will not <em>share the last spoon.</em></p>
       </div>
     </div>
   </section>
 
-  <!-- 7 ticket -->
+  <!-- 8 -->
   <section class="slide s-7">
     <div class="glow" style="--gx:50%;--gy:70%;--g:rgba(244,98,43,.4)"></div>
     <div class="inner">
-      <div class="verse kt"><p class="big">So here is my offer. <em>Take me seriously, and the jollof is on me. Forever.</em></p></div>
+      <div class="verse kt"><p class="big">So here is your gift. <em>Unlimited jollof dates, on me.</em></p></div>
       <div class="ticket" id="ticket">
         <div class="tk">
-          <p class="adm">Admit one &middot; Winnifred</p>
+          <p class="adm">Birthday voucher &middot; Winnifred</p>
           <h3>Unlimited jollof dates</h3>
           <ul>
-            <li><span>Valid</span>From the day you start taking me seriously</li>
+            <li><span>Valid</span>From today, and every day after</li>
             <li><span>Expires</span>Never. I checked the budget and approved it myself</li>
             <li><span>Terms</span>You pick the spot. I pay. The last spoon is negotiable</li>
+            <li><span>Fine print</span>Taking me seriously is optional. Extra rice is guaranteed if you do</li>
             <li><span>Issued by</span>Office of the Financial Secretary, NOLAP</li>
           </ul>
         </div>
@@ -400,20 +450,22 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div>
   </section>
 
-  <!-- 8 close -->
+  <!-- 9 -->
   <section class="slide s-8">
     <div class="glow" style="--gx:15%;--gy:20%;--g:rgba(246,169,188,.26)"></div>
+    <div class="balloons" aria-hidden="true"><i style="--x:10%;--c:#f4622b;--d:2s;--t:12s"></i><i style="--x:30%;--c:#f6a9bc;--d:4s;--t:13s"></i><i style="--x:74%;--c:#e8c07a;--d:1s;--t:11s"></i><i style="--x:90%;--c:#e8485f;--d:3s;--t:14s"></i></div>
     <div class="inner">
-      <h2 class="close-h"><span data-letters>I mean it,</span><em data-letters>Winnie.</em><span class="beat"><i></i><i></i><i></i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5-9.6-10.3C1.2 6.8 4.2 4 7.2 5.2c1.9.8 3.4 2.6 4.8 4.6 1.4-2 2.9-3.8 4.8-4.6 3-1.2 6 1.6 4.8 5.5C20 16 12 21 12 21z"/></svg></span></h2>
+      <h2 class="close-h"><span data-letters>Happy birthday,</span><em data-letters>Winnie.</em><span class="beat"><i></i><i></i><i></i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-8-5-9.6-10.3C1.2 6.8 4.2 4 7.2 5.2c1.9.8 3.4 2.6 4.8 4.6 1.4-2 2.9-3.8 4.8-4.6 3-1.2 6 1.6 4.8 5.5C20 16 12 21 12 21z"/></svg></span></h2>
       <div class="verse kt" style="--base:1.8s">
-        <p>This is not a proposal. I am not asking for an answer tonight.</p>
-        <p>I am asking you to hear me properly, once, without a laugh.</p>
-        <p class="soft">Take your time. I am patient, I am funny sometimes, and I am not going anywhere.</p>
+        <p>I hope this year is gentle with you, and generous.</p>
+        <p>I hope you laugh until your face hurts, rest when you need to, and never doubt how loved you are.</p>
+        <p class="soft">And if you ever want company for any of it, you know where to find me.</p>
       </div>
       <p class="sign">Yours, the one who keeps the books<small>Financial Secretary, NOLAP</small></p>
       <button class="again" id="again" type="button">&#8634;&nbsp; Read it again</button>
     </div>
   </section>
+
 </main>
 
 <canvas id="fx" aria-hidden="true"></canvas>
@@ -524,10 +576,18 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   function onEnter(i){
     timers.forEach(clearTimeout);timers=[];
     if(i===3){later(playV,900)}else{v.pause()}
-    if(i===4){countUp();later(function(){rain('coins')},1200);later(function(){var s=document.getElementById('sheet');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake')},5650)}
-    if(i===7){later(function(){burst()},3500)}
+    if(i===0){later(function(){burst(.5,.5)},1500)}
+    if(i===6){resetWish()}
+    if(i===9){later(function(){burst(.5,.4)},1600)}
+    if(i===4){later(function(){rain('coins')},1200);later(function(){var s=document.getElementById('sheet');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake')},5650)}
+    if(i===8){later(function(){burst()},3500)}
   }
   snd.addEventListener('click',function(){var on=v.muted;v.muted=!on;snd.setAttribute('aria-pressed',String(on));snd.innerHTML=on?'&#9835;&nbsp; Sound on':'&#9835;&nbsp; Tap for sound';if(v.paused)playV();duck=on;if(duck){if(playing)fadeTo(0)}else if(wanted&&playing){fadeTo(.8)}});
+
+  /* make a wish */
+  var cake=document.getElementById('cake'),blow=document.getElementById('blow'),after=document.getElementById('after');
+  function resetWish(){cake.classList.remove('out');after.classList.remove('show');blow.classList.remove('gone')}
+  blow.addEventListener('click',function(){cake.classList.add('out');blow.classList.add('gone');after.classList.add('show');burst(.5,.55);setTimeout(function(){burst(.3,.6);burst(.7,.6)},350)});
 
   /* ---------- song ---------- */
   var song=document.getElementById('song'),chip=document.getElementById('chip'),hint=document.getElementById('hint'),playing=false,wanted=true,fade=null,duck=false;
@@ -553,7 +613,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 
   /* confetti and coin rain on the second canvas */
   var Q=[];
-  function burst(){var ox=W/2,oy=H*.62;for(var i=0;i<140;i++){var a=Math.random()*6.283,sp=4+Math.random()*10;Q.push({x:ox,y:oy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-6,g:.2,r:3+Math.random()*5,rot:Math.random()*6,vr:(Math.random()-.5)*.4,c:['#f4622b','#ffb35a','#e8c07a','#f6a9bc','#fff2e6'][i%5],life:160+Math.random()*60,sq:true})}}
+  function burst(fx,fy){var ox=W*(fx==null?.5:fx),oy=H*(fy==null?.62:fy);for(var i=0;i<140;i++){var a=Math.random()*6.283,sp=4+Math.random()*10;Q.push({x:ox,y:oy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-6,g:.2,r:3+Math.random()*5,rot:Math.random()*6,vr:(Math.random()-.5)*.4,c:['#f4622b','#ffb35a','#e8c07a','#f6a9bc','#fff2e6'][i%5],life:160+Math.random()*60,sq:true})}}
   function rain(){for(var i=0;i<46;i++){(function(i){setTimeout(function(){Q.push({x:Math.random()*W,y:-20,vx:(Math.random()-.5)*1.4,vy:3+Math.random()*3,g:.12,r:7+Math.random()*6,rot:0,vr:0,c:'#e8c07a',life:260,coin:true,sp:Math.random()*6})},i*55)})(i)}}
   function loop(){
     cx.clearRect(0,0,W,H);
