@@ -1,0 +1,304 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#1a0a14">
+<title>Winnie, Slow Down</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&family=Caveat:wght@600&display=swap">
+<style>
+/* Concept: a love letter written by a Financial Secretary. Plum-black night, jollof-orange glow, a cream ledger sheet and a jollof voucher as the two physical objects. Photos sit in arches. Single committed dark look. */
+:root{
+  --bg:#1a0a14; --bg2:#26101f; --ink:#fbe8de; --mute:#d6b4b2; --jollof:#f4622b; --ember:#ff9b5e; --rose:#f6a9bc; --gold:#e8c07a;
+  --paper:#f7ead8; --paper-ink:#4a1628; --rule:rgba(74,22,40,.2);
+  --serif:'Fraunces',Georgia,'Times New Roman',serif; --sans:'DM Sans',system-ui,sans-serif; --hand:'Caveat','Segoe Print',cursive;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.7;overflow-x:hidden}
+h1,h2,h3,p,figure,ul{margin:0;padding:0}
+ul{list-style:none}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .8 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.bar{position:fixed;left:0;top:0;height:3px;width:100%;transform-origin:left;transform:scaleX(0);background:linear-gradient(90deg,var(--jollof),var(--gold));z-index:60}
+
+.scene{position:relative;padding-block:clamp(72px,11vw,140px);padding-inline:22px;overflow:hidden}
+.scene::before{content:"";position:absolute;width:min(90vw,820px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,var(--glow,rgba(244,98,43,.22)),transparent 68%);filter:blur(10px);left:var(--gx,-20%);top:var(--gy,10%);pointer-events:none}
+.in{position:relative;z-index:1;max-width:1060px;margin-inline:auto}
+.narrow{max-width:620px}
+
+/* reveal */
+.js .ln,.js .reveal{opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease),transform 1s var(--ease);transition-delay:calc(var(--i,0)*.14s)}
+.js .ln.show,.js .reveal.show{opacity:1;transform:none}
+
+/* cover */
+.cover{padding-top:clamp(56px,9vw,110px);padding-bottom:clamp(60px,9vw,110px);--gx:30%;--gy:-30%}
+.for{font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.cover h1{margin-top:22px;font-family:var(--serif);font-weight:300;font-style:italic;font-size:clamp(4rem,17vw,10.5rem);line-height:.95;letter-spacing:-.03em;font-optical-sizing:auto}
+.cover h1 .w1{display:block;background:linear-gradient(100deg,var(--ember),var(--rose) 70%);-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.1em}
+.cover h1 .w2{display:block;color:var(--ink);font-weight:300}
+.cover .sub{margin-top:30px;max-width:30em;font-size:1.15rem;color:var(--mute)}
+.cover .sub b{color:var(--ink);font-weight:500}
+.cue{margin-top:44px;display:inline-flex;align-items:center;gap:14px;font-family:var(--hand);font-size:1.6rem;color:var(--gold)}
+.cue i{display:block;width:1.5px;height:54px;background:linear-gradient(var(--gold),transparent);animation:drip 2.2s ease-in-out infinite;transform-origin:top}
+@keyframes drip{0%{transform:scaleY(.2);opacity:.2}60%{transform:scaleY(1);opacity:1}100%{transform:scaleY(1);opacity:0}}
+
+/* verse text */
+.verse{display:grid;gap:22px}
+.verse p{font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,3.6vw,1.9rem);line-height:1.45;letter-spacing:-.005em}
+.verse p em{font-style:italic;font-weight:400;color:var(--ember)}
+.verse p.big{font-size:clamp(1.8rem,5.4vw,3rem);line-height:1.15;font-style:italic;font-weight:400}
+.verse p.soft{font-family:var(--sans);font-size:1rem;color:var(--mute);font-weight:400;line-height:1.7}
+.note{font-family:var(--hand);font-size:1.7rem;line-height:1.15;color:var(--gold);transform:rotate(-2deg);margin-top:6px}
+
+/* arch photos */
+.pair{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(36px,7vw,100px);align-items:center}
+.pair.flip .fig{order:2}
+.fig{position:relative;justify-self:center;width:min(100%,400px);margin-bottom:20px}
+.arch{position:relative;aspect-ratio:3/4;border-radius:999px 999px 30px 30px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 0 1px rgba(232,192,122,.35)}
+.arch img{position:absolute;left:0;top:-6%;width:100%;height:112%;object-fit:cover;transform:translateY(var(--py,0px));will-change:transform}
+.fig::before{content:"";position:absolute;inset:-14px;border-radius:999px 999px 40px 40px;border:1px solid rgba(244,98,43,.5);z-index:0}
+.fig::after{content:attr(data-cap);position:absolute;left:50%;bottom:-18px;transform:translateX(-50%) rotate(-2deg);background:var(--paper);color:var(--paper-ink);padding:6px 16px;border-radius:4px;font-family:var(--hand);font-size:1.4rem;line-height:1.2;white-space:nowrap;box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.fig .arch{z-index:1}
+
+/* video */
+.vwrap{justify-self:center;position:relative}
+.phone{width:min(290px,76vw);aspect-ratio:480/848;border-radius:36px;overflow:hidden;background:#000;border:6px solid #0b0408;box-shadow:0 40px 90px rgba(0,0,0,.6),0 0 0 1px rgba(232,192,122,.35),0 0 80px rgba(244,98,43,.2);position:relative}
+.phone video{width:100%;height:100%;object-fit:cover;display:block}
+.snd{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;border:0;cursor:pointer;background:rgba(251,232,222,.92);color:#3a1020;font:600 13px var(--sans);white-space:nowrap}
+.snd:focus-visible{outline:3px solid var(--ember);outline-offset:3px}
+.rec{position:absolute;top:14px;left:16px;z-index:2;display:inline-flex;align-items:center;gap:6px;font:600 11px var(--sans);letter-spacing:.12em;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.rec i{width:8px;height:8px;border-radius:50%;background:#ff4d5e;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{opacity:.25}}
+
+/* ledger */
+.ledger{--glow:rgba(232,192,122,.14);--gx:50%}
+.sheet{position:relative;max-width:640px;margin-inline:auto;background:var(--paper);color:var(--paper-ink);border-radius:6px;padding:clamp(26px,5vw,48px);padding-bottom:clamp(96px,16vw,120px);box-shadow:0 40px 90px rgba(0,0,0,.55);background-image:repeating-linear-gradient(transparent 0 35px,var(--rule) 35px 36px);transform:rotate(-.6deg)}
+.sheet::before{content:"";position:absolute;left:clamp(14px,3vw,26px);top:0;bottom:0;width:2px;background:rgba(214,60,60,.35)}
+.sheet h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.1rem,3vw,1.35rem);letter-spacing:.2em;text-transform:uppercase}
+.sheet .by{font-size:.9rem;opacity:.7;margin-top:2px}
+.rows{margin-top:26px;display:grid;gap:0}
+.row{display:flex;align-items:baseline;gap:10px;min-height:36px;font-size:1.02rem;line-height:36px}
+.row i{flex:1;min-width:20px;border-bottom:2px dotted var(--rule);transform:translateY(-6px)}
+.row b{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.row.total{margin-top:14px;border-top:3px double var(--paper-ink);padding-top:6px;font-family:var(--serif);font-size:1.25rem;font-weight:500}
+.stamp{position:absolute;right:clamp(14px,5vw,40px);bottom:clamp(22px,4vw,34px);transform:rotate(-14deg) scale(1);border:3px solid var(--jollof);color:var(--jollof);padding:8px 14px;border-radius:8px;font:700 .95rem/1.15 var(--sans);letter-spacing:.14em;text-align:center;text-transform:uppercase;mix-blend-mode:multiply;opacity:.88}
+.js .stamp{opacity:0;transform:rotate(-14deg) scale(1.9);transition:opacity .3s,transform .5s cubic-bezier(.3,1.6,.5,1) .6s}
+.js .stamp.show{opacity:.88;transform:rotate(-14deg) scale(1)}
+.lead{max-width:620px;margin:0 auto 40px}
+
+/* jollof */
+.jol{--glow:rgba(244,98,43,.3);--gx:55%;--gy:0%}
+.plate{width:min(340px,76vw);aspect-ratio:1;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 10px rgba(244,98,43,.16),0 0 0 11px rgba(244,98,43,.55),0 40px 90px rgba(0,0,0,.6)}
+.plate-wrap{justify-self:center;position:relative}
+.plate-wrap .note{position:absolute;right:-8px;bottom:-14px;background:var(--paper);color:var(--paper-ink);padding:4px 14px;border-radius:4px;font-size:1.35rem;transform:rotate(3deg);box-shadow:0 10px 24px rgba(0,0,0,.4)}
+.ticket{margin:clamp(56px,9vw,90px) auto 0;max-width:820px;display:grid;grid-template-columns:minmax(0,1fr) 150px;background:linear-gradient(135deg,#f6672d,#c73a18 70%);color:#fff2e6;border-radius:24px;box-shadow:0 40px 90px rgba(0,0,0,.55),0 0 90px rgba(244,98,43,.25);position:relative}
+.tk{padding:clamp(26px,5vw,44px)}
+.tk .adm{font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;font-weight:700;opacity:.85}
+.tk h3{margin-top:10px;font-family:var(--serif);font-weight:500;font-style:italic;font-size:clamp(2rem,6.4vw,3.6rem);line-height:1}
+.tk ul{margin-top:22px;display:grid;gap:8px;font-size:.98rem;line-height:1.5}
+.tk li{display:grid;grid-template-columns:78px 1fr;gap:10px}
+.tk li span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.75;padding-top:3px}
+.stub{position:relative;border-left:2px dashed rgba(255,242,230,.55);display:grid;place-items:center;padding:20px 14px;gap:14px;text-align:center}
+.stub::before,.stub::after{content:"";position:absolute;width:30px;height:30px;border-radius:50%;background:var(--bg);left:-16px}
+.stub::before{top:-16px}.stub::after{bottom:-16px}
+.stub .no{font-family:var(--serif);font-size:.85rem;letter-spacing:.2em;font-weight:500}
+.stub .bc{width:84px;height:60px;background:repeating-linear-gradient(90deg,#fff2e6 0 2px,transparent 2px 4px,#fff2e6 4px 5px,transparent 5px 9px,#fff2e6 9px 12px,transparent 12px 14px);opacity:.9;border-radius:2px}
+
+/* close */
+.close{--glow:rgba(246,169,188,.2);--gx:10%;--gy:-10%;text-align:left}
+.close h2{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(3rem,12vw,7rem);line-height:1;letter-spacing:-.03em}
+.close h2 em{background:linear-gradient(100deg,var(--ember),var(--rose));-webkit-background-clip:text;background-clip:text;color:transparent;padding-right:.08em}
+.close .verse{margin-top:36px}
+.sign{margin-top:44px;font-family:var(--hand);font-size:2.3rem;line-height:1.1;color:var(--ink)}
+.sign small{display:block;font-family:var(--sans);font-size:.78rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+.ps{margin-top:30px;font-family:var(--hand);font-size:1.7rem;line-height:1.2;color:var(--gold);transform:rotate(-1.5deg);max-width:22em}
+.foot{padding:34px 22px 60px;text-align:center;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);opacity:.8}
+
+@media (max-width:860px){
+  .pair{grid-template-columns:minmax(0,1fr);gap:56px}
+  .pair.flip .fig{order:0}
+  .ticket{grid-template-columns:minmax(0,1fr)}
+  .stub{border-left:0;border-top:2px dashed rgba(255,242,230,.55);grid-auto-flow:column;padding:18px 24px;justify-content:space-between}
+  .stub::before,.stub::after{left:auto;top:-16px;bottom:auto}
+  .stub::before{left:-16px}.stub::after{right:-16px}
+  .stub .bc{width:110px;height:44px}
+}
+@media (max-width:420px){.tk li{grid-template-columns:1fr;gap:0}.row{font-size:.95rem}.stamp{font-size:.8rem;padding:6px 10px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}.js .ln,.js .reveal,.js .stamp{opacity:1!important;transform:none!important}.js .stamp{transform:rotate(-14deg)!important}}
+</style>
+</head>
+<body>
+
+
+<div class="bar" id="bar"></div>
+
+<header class="scene cover">
+  <div class="in">
+    <p class="for">For Winnifred</p>
+    <h1><span class="w1">Winnie,</span><span class="w2">slow down.</span></h1>
+    <p class="sub ln" style="--i:2">I know you. You're about to scroll straight to the bottom. <b>Don't.</b> Every line on this page is true, so read it like you believe me.</p>
+    <p class="cue ln" style="--i:3"><i></i>keep going</p>
+  </div>
+</header>
+
+<section class="scene" style="--gx:-25%;--gy:5%">
+  <div class="in pair">
+    <figure class="fig" data-cap="the problem, in person"><div class="arch"><img src="{% static 'gifts/winnie/p1.jpg' %}" alt="Winnie"></div></figure>
+    <div class="verse">
+      <p class="ln">Let me start small.</p>
+      <p class="ln">When you walk into a room, I forget what I was about to say.</p>
+      <p class="ln">I have lost two arguments, one meeting and a really good sentence because of you.</p>
+      <p class="ln big">You are not even trying. <em>That is the dangerous part.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="scene" style="--gx:60%;--gy:-5%;--glow:rgba(246,169,188,.16)">
+  <div class="in narrow verse">
+    <p class="ln">Here is my problem, Winnie.</p>
+    <p class="ln">Every time I say I like you, you laugh.</p>
+    <p class="ln">It is a good laugh. I would pay money to hear it. But I mean it every time, and it is hard to say a serious thing to someone who thinks you are being funny.</p>
+    <p class="ln big">So I wrote it down. <em>You can't laugh a page away.</em></p>
+    <p class="ln note">(you can try)</p>
+  </div>
+</section>
+
+<section class="scene" style="--gx:-10%;--gy:20%;--glow:rgba(244,98,43,.2)">
+  <div class="in pair flip">
+    <div class="vwrap reveal">
+      <div class="phone">
+        <span class="rec"><i></i>WINNIE · 8 SEC</span>
+        <video id="vid" src="{% static 'gifts/winnie/winnie.mp4' %}" poster="{% static 'gifts/winnie/poster.jpg' %}" muted loop playsinline preload="metadata"></video>
+        <button class="snd" id="snd" type="button" aria-pressed="false">&#9835;&nbsp; Tap for sound</button>
+      </div>
+    </div>
+    <div class="verse">
+      <p class="ln">Eight seconds of you.</p>
+      <p class="ln">I have watched it more times than I will say out loud. At this point it should be in the books as a recurring expense.</p>
+      <p class="ln big">Worth every <em>pesewa.</em></p>
+    </div>
+  </div>
+</section>
+
+<section class="scene ledger">
+  <div class="in">
+    <div class="lead verse">
+      <p class="ln">At NOLAP, I count other people's money.</p>
+      <p class="ln big">The only thing I have ever <em>overspent</em> on is you.</p>
+      <p class="ln soft">So I did what I do best. I opened the books.</p>
+    </div>
+    <div class="sheet reveal">
+      <h2>Statement of account</h2>
+      <p class="by">Prepared by the Financial Secretary, for W. only</p>
+      <div class="rows">
+        <div class="row"><span>Texts typed, deleted, typed again</span><i></i><b>112</b></div>
+        <div class="row"><span>Nights awake for one reply</span><i></i><b>31</b></div>
+        <div class="row"><span>Times I said I like you</span><i></i><b>lost count</b></div>
+        <div class="row"><span>Times you laughed it off</span><i></i><b>every one</b></div>
+        <div class="row"><span>Regrets</span><i></i><b>0</b></div>
+        <div class="row total"><span>Balance</span><i></i><b>all of me</b></div>
+      </div>
+      <div class="stamp" id="stamp">Audited<br>&amp; meant</div>
+    </div>
+  </div>
+</section>
+
+<section class="scene" style="--gx:55%;--gy:5%;--glow:rgba(246,169,188,.15)">
+  <div class="in pair">
+    <figure class="fig" data-cap="“i need to sleep”"><div class="arch"><img src="{% static 'gifts/winnie/p2.jpg' %}" alt="Winnie in a bonnet, resting her face in her hands"></div></figure>
+    <div class="verse">
+      <p class="ln">You wrote “I need to sleep” on this one.</p>
+      <p class="ln">I did not sleep. Not that night, not the next.</p>
+      <p class="ln">You, in a bonnet, tired, not even posing.</p>
+      <p class="ln big">And still the <em>best thing</em> I saw all week.</p>
+      <p class="ln soft">Tired Winnie is my favourite Winnie, and I have met all of them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="scene jol">
+  <div class="in">
+    <div class="pair flip">
+      <div class="plate-wrap reveal"><img class="plate" src="{% static 'gifts/winnie/jollof.jpg' %}" alt="A pot of smoky party jollof rice"><span class="note">exhibit A</span></div>
+      <div class="verse">
+        <p class="ln">Now, business.</p>
+        <p class="ln">I have seen your face when a good plate of jollof lands on the table. You go quiet. Serious. Holy.</p>
+        <p class="ln">That is the same face I make when you text back.</p>
+        <p class="ln big">So here is my offer. <em>Take me seriously, and the jollof is on me. Forever.</em></p>
+      </div>
+    </div>
+
+    <div class="ticket reveal">
+      <div class="tk">
+        <p class="adm">Admit one · Winnifred</p>
+        <h3>Unlimited jollof dates</h3>
+        <ul>
+          <li><span>Valid</span>From the day you start taking me seriously</li>
+          <li><span>Expires</span>Never. I checked the budget and approved it myself</li>
+          <li><span>Terms</span>You pick the spot. I pay. The last spoon is negotiable</li>
+          <li><span>Issued by</span>Office of the Financial Secretary, NOLAP</li>
+        </ul>
+      </div>
+      <div class="stub"><div class="no">NO.<br>001</div><div class="bc"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="scene close">
+  <div class="in narrow">
+    <h2 class="ln">I mean it,<br><em>Winnie.</em></h2>
+    <div class="verse">
+      <p class="ln">This is not a proposal. I am not asking for an answer tonight.</p>
+      <p class="ln">I am asking you to hear me properly, once, without a laugh.</p>
+      <p class="ln soft">Take your time. I am patient, I am funny sometimes, and I am not going anywhere.</p>
+    </div>
+    <p class="sign ln">Yours,<br>the one who keeps the books<small>Financial Secretary, NOLAP</small></p>
+    <p class="ps ln">P.S. The jollof offer is also valid if you laugh again.</p>
+  </div>
+</section>
+
+<footer class="foot">Made with NOLAP GIFTS &middot; Powered by NOLAP TECHNOLOGIES</footer>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* stagger lines inside each group, then reveal as they enter */
+  [].forEach.call(document.querySelectorAll('.verse,.in'),function(g){
+    var n=0;[].forEach.call(g.children,function(c){if(c.classList.contains('ln')&&!c.style.getPropertyValue('--i')){c.style.setProperty('--i',n++)}})
+  });
+  var items=[].slice.call(document.querySelectorAll('.ln,.reveal'));
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('show');if(e.target.querySelector&&e.target.querySelector('.stamp'))document.getElementById('stamp').classList.add('show');io.unobserve(e.target)}})},{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+    items.forEach(function(i){io.observe(i)});
+  }else{items.forEach(function(i){i.classList.add('show')});document.getElementById('stamp').classList.add('show')}
+
+  /* reading progress */
+  var bar=document.getElementById('bar'),arches=[].slice.call(document.querySelectorAll('.arch')),tick=false;
+  function frame(){
+    tick=false;
+    var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?Math.min(1,scrollY/h):0)+')';
+    if(!reduce)arches.forEach(function(a){var r=a.getBoundingClientRect();var c=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight));a.style.setProperty('--py',(c*-28).toFixed(1)+'px')});
+  }
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+
+  /* her video: plays muted while on screen, sound on tap */
+  var v=document.getElementById('vid'),b=document.getElementById('snd'),seen=false;
+  function play(){var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  if('IntersectionObserver' in window){new IntersectionObserver(function(es){es.forEach(function(e){seen=e.isIntersecting;if(seen)play();else v.pause()})},{threshold:.4}).observe(v)}else{play()}
+  b.addEventListener('click',function(){
+    var on=v.muted;v.muted=!on;b.setAttribute('aria-pressed',String(on));
+    b.innerHTML=on?'&#9835;&nbsp; Sound on':'&#9835;&nbsp; Tap for sound';
+    if(v.paused)play();
+  });
+  document.addEventListener('visibilitychange',function(){if(document.hidden)v.pause();else if(seen)play()});
+})();
+</script>
+
+</body>
+</html>

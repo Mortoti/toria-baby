@@ -4,6 +4,7 @@ from django.shortcuts import render
 # Every gift has an unguessable link. Nothing here is listed or searchable.
 GIFTS = {
     "toria-8m-k7q2x9": {"template": "gifts/anniversary.html"},
+    "winnie-3q-h8w5n2": {"template": "gifts/winnie.html"},
 }
 
 
