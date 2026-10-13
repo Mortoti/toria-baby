@@ -16,14 +16,20 @@ html,body{height:100%}
 body{margin:0;background:radial-gradient(circle at 50% 40%,#f7bfce,#d98fa8 85%);color:var(--ink);font-family:var(--font);overflow:hidden;padding:0}
 p,h1,h2,h3{margin:0}
 button{font-family:inherit}
-#app{position:fixed;inset:0;display:grid;place-items:center}
-#stage{position:relative;height:100%;aspect-ratio:9/16;max-width:100%;overflow:hidden;container-type:size;background:var(--bg);user-select:none;-webkit-tap-highlight-color:transparent}
-@media (min-aspect-ratio:1/1){ #stage{height:min(100%,920px);border-radius:44px;border:9px solid #24121c;box-shadow:0 30px 90px rgba(80,10,40,.5)}}
+#app{position:fixed;inset:0;display:grid;grid-template:minmax(0,1fr) / minmax(0,1fr);place-items:center}
+#phone{position:relative;height:100%;aspect-ratio:9/16;max-width:100%}
+#stage{position:absolute;inset:0;overflow:hidden;container-type:size;background:var(--bg);user-select:none;-webkit-tap-highlight-color:transparent}
+.bezel{display:none}
+/* on a computer the film plays inside a real iPhone; on a phone it fills the screen */
+@media (min-aspect-ratio:1/1){
+  #phone{height:min(96vh,1100px);aspect-ratio:736/1492;max-width:none;filter:drop-shadow(0 3vh 5vh rgba(80,10,40,.45))}
+  #stage{inset:auto;left:5.6%;top:2.6%;width:88.8%;height:94.7%}
+  .bezel{display:block;position:absolute;inset:0;width:100%;height:100%;z-index:100;pointer-events:none}
+}
 #stage.paused *{animation-play-state:paused!important}
 
 /* phone chrome */
 #status{position:absolute;left:0;right:0;top:0;height:5.2cqh;display:flex;align-items:center;justify-content:space-between;padding:0 7cqw;font-size:3.4cqw;font-weight:600;color:var(--ink);z-index:46;background:rgba(255,246,249,.9)}
-#status::before{content:"";position:absolute;left:50%;top:1.1cqh;width:24cqw;height:3cqh;margin-left:-12cqw;border-radius:9cqw;background:#1e1018}
 #status .ic{display:flex;gap:1.6cqw;align-items:center}
 #status svg{height:2.6cqw;width:auto;fill:var(--ink)}
 .batt{width:6cqw;height:2.8cqw;border:.4cqw solid var(--ink);border-radius:.9cqw;position:relative;padding:.3cqw}
@@ -232,6 +238,7 @@ canvas#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z
 <audio id="song" src="{% static 'gifts/toria/song.mp3' %}" loop preload="auto"></audio>
 
 <div id="app">
+<div id="phone">
 <div id="stage">
 
 <div id="gate">
@@ -462,9 +469,12 @@ canvas#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z
 <div id="veil"></div>
 <canvas id="fx"></canvas>
 </div>
+<img class="bezel" data-src="{% static 'gifts/iphone.png' %}" alt="" aria-hidden="true">
+</div>
 </div>
 
 <script>(function(){
+var bz=document.querySelector('.bezel');if(bz&&matchMedia('(min-aspect-ratio:1/1)').matches)bz.src=bz.getAttribute('data-src');
 var IMG={1:"{% static 'gifts/toria/1.jpg' %}",2:"{% static 'gifts/toria/2.jpg' %}",3:"{% static 'gifts/toria/3.jpg' %}",4:"{% static 'gifts/toria/4.jpg' %}",5:"{% static 'gifts/toria/5.jpg' %}",6:"{% static 'gifts/toria/6.jpg' %}",7:"{% static 'gifts/toria/7.jpg' %}"};
 [].forEach.call(document.querySelectorAll('img[data-i]'),function(im){im.src=IMG[im.getAttribute('data-i')]});
 [].forEach.call(document.querySelectorAll('.scene'),function(s){s.insertAdjacentHTML('afterbegin','<div class="contour"></div>')});
