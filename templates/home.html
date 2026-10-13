@@ -71,7 +71,10 @@ h1 em{font-style:italic;font-weight:600;background:var(--foil);background-size:2
 @keyframes in{to{opacity:1;transform:none}}
 .w{display:inline-block;opacity:0;transform:translateY(.6em) rotate(3deg);animation:wd .8s var(--ease) forwards;animation-delay:calc(.15s + var(--i)*.09s)}
 @keyframes wd{to{opacity:1;transform:none}}
-.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:32px;max-width:31rem}
+.cdhead{margin:34px 0 0;display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:clamp(1.5rem,2.8vw,2.1rem);line-height:1.15;letter-spacing:-.01em}
+.cdhead em{font-style:italic;font-weight:600}
+.cdhead span{font-size:.8em}
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:16px;max-width:31rem}
 .tile{border-radius:22px;padding:16px 8px 12px;text-align:center;background:linear-gradient(160deg,#9c2c5a,#5e1538);color:#fff;border:1px solid rgba(246,211,107,.6);box-shadow:.5rem .7rem 1.4rem rgba(94,21,56,.32),inset 0 1px 0 rgba(255,255,255,.25);position:relative;overflow:hidden}
 .tile::before{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 6px,rgba(246,211,107,.18) 6px 7px)}
 .tile b{position:relative;display:block;font-family:var(--serif);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.5rem);line-height:1.1;font-variant-numeric:tabular-nums;background:var(--foil);-webkit-background-clip:text;background-clip:text;color:transparent}
@@ -189,7 +192,7 @@ h1 em{font-style:italic;font-weight:600;background:var(--foil);background-size:2
 @media (max-width:1100px){.occgrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:900px){
   .hero{grid-template-columns:minmax(0,1fr);gap:10px;padding-top:6px}
-  .copy-col{text-align:center}.lede{margin-inline:auto}.count{margin-inline:auto}.hero .eyebrow{justify-content:center}.hero .eyebrow::after{content:"";width:34px;height:1px;background:var(--foil)}
+  .copy-col{text-align:center}.cdhead{justify-content:center}.lede{margin-inline:auto}.count{margin-inline:auto}.hero .eyebrow{justify-content:center}.hero .eyebrow::after{content:"";width:34px;height:1px;background:var(--foil)}
   .steps{grid-template-columns:minmax(0,1fr)}
   .split,.split.rev{grid-template-columns:minmax(0,1fr);gap:34px}
   .split.rev .pkart{order:2}
@@ -217,9 +220,9 @@ h1 em{font-style:italic;font-weight:600;background:var(--foil);background-size:2
 
   <main class="hero">
     <section class="copy-col">
-      <p class="eyebrow rv" style="--d:.05s">Launching 7 November 2026</p>
       <h1 id="h1">A gift made <em>just for them.</em></h1>
       <p class="lede rv" style="--d:.9s">Send a thoughtful gift package to their door, and add a personal digital gift made from your photos, videos, words and favourite song.</p>
+      <h2 class="cdhead rv" style="--d:1s"><span class="foil" aria-hidden="true">&#10022;</span>Launching <em class="foil">7 November 2026</em></h2>
       <div class="count rv" id="count" style="--d:1.1s" aria-label="Countdown to launch">
         <div class="tile"><b id="cd">0</b><span>days</span></div>
         <div class="tile"><b id="ch">0</b><span>hours</span></div>
@@ -227,7 +230,6 @@ h1 em{font-style:italic;font-weight:600;background:var(--foil);background-size:2
         <div class="tile"><b id="cs">0</b><span>secs</span></div>
       </div>
       <div class="live" id="live">We are live. Welcome to NOLAP GIFTS.</div>
-      <p class="when rv" style="--d:1.3s">Saturday, 7 November 2026</p>
     </section>
     <div class="gift3d rv" style="--d:.3s" id="gift3d" aria-hidden="true"><div class="s3d" id="s3d"><div class="aura"></div><div class="ground"></div><div class="gb"><div class="bd"><div class="f fr"></div><div class="f bk"></div><div class="f lf"></div><div class="f rt"></div><div class="fl"></div><div class="rg"></div></div><div class="ld"><div class="f fr"></div><div class="f bk"></div><div class="f lf"></div><div class="f rt"></div><div class="f tp"></div></div></div><div class="beam"></div><svg class="bow" viewBox="0 0 200 120" aria-hidden="true"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbe596"/><stop offset=".5" stop-color="#dba43d"/><stop offset="1" stop-color="#a8731f"/></linearGradient></defs><path d="M100 66C58 6 6 18 16 58 24 94 80 88 100 66z" fill="url(#gg)"/><path d="M100 66C142 6 194 18 184 58 176 94 120 88 100 66z" fill="url(#gg)"/><path d="M92 66C60 22 28 30 32 54 38 76 76 76 92 66z" fill="none" stroke="#fff3bf" stroke-opacity=".75" stroke-width="3"/><path d="M108 66C140 22 172 30 168 54 162 76 124 76 108 66z" fill="none" stroke="#fff3bf" stroke-opacity=".75" stroke-width="3"/><path d="M92 76 60 116l24-8 16-28z" fill="url(#gg)"/><path d="M108 76l32 40-24-8-16-28z" fill="url(#gg)"/><rect x="86" y="52" width="28" height="30" rx="11" fill="url(#gg)" stroke="#fff1b0" stroke-opacity=".7"/></svg></div></div>
   </main>
