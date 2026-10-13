@@ -112,26 +112,26 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
 .pgbar i{display:block;height:100%;background:var(--hot);transform-origin:left;transform:scaleX(0)}
 .stage{padding-bottom:30px}
 /* packages bento */
-.bento{margin-top:48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:260px 260px;gap:18px}
+.bento{margin-top:48px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:300px 300px;gap:18px}
 .pk{position:relative;border-radius:30px;overflow:hidden;box-shadow:0 18px 40px rgba(120,30,70,.2);background:#fff}
 .pk img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}.pk:hover img{transform:scale(1.05)}
 .pk figcaption{position:absolute;left:14px;bottom:14px;padding:9px 16px;border-radius:99px;background:rgba(255,255,255,.92);font-weight:700;font-size:.9rem}
 .p1{grid-column:1/3;grid-row:1/3}.p2{grid-column:3;grid-row:1}.p3{grid-column:4;grid-row:1}.p4{grid-column:3;grid-row:2}.p5{grid-column:4;grid-row:2}
-.p1 img{object-position:center 45%}
+.p1 img{object-position:center 45%}.p2 img{object-position:center 40%}.p3 img{object-position:center 22%}.p5 img{object-position:center 32%}
 /* footer */
 .foot{background:var(--ink);color:#fff;text-align:center;padding:46px 24px 60px}
 .pow{display:inline-flex;align-items:center;gap:12px;font-weight:500}.pow b{letter-spacing:.06em}
 .copy{margin-top:14px;font-size:13px;opacity:.6}
 .sec.rvs{opacity:0;transform:translateY(24px)}.sec.rvs.in{opacity:1;transform:none;transition:opacity .9s var(--ease),transform .9s var(--ease)}
 @media (max-width:900px){
- .hgrid{grid-template-columns:minmax(0,1fr)}.collage{justify-self:center;max-width:440px}
+ .hgrid{grid-template-columns:minmax(0,1fr)}.collage{justify-self:center;width:min(100%,520px)}
  .sec{padding-block:68px}
  .olist{grid-template-columns:minmax(0,1fr)}
  .steps{grid-template-columns:minmax(0,1fr);gap:32px}.steps li::after{display:none}.sn{font-size:4.4rem}
  .dgrid{grid-template-columns:minmax(0,1fr)}.stage{order:-1}.phone{height:min(66vh,560px)}.dside{gap:24px}
- .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:220px}
- .p1{grid-column:1/-1;grid-row:auto}.p2,.p3,.p4,.p5{grid-column:auto;grid-row:auto}.p5{grid-column:1/-1}
-}
+ .bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:auto}
+ .pk{aspect-ratio:4/5}.p1{grid-column:1/-1;grid-row:auto;aspect-ratio:4/3}.p1 img{object-position:center 30%}.p2,.p3,.p4,.p5{grid-column:auto;grid-row:auto}.p3 img{object-position:center 18%}
+ .collage{max-width:520px}}
 @media (max-width:520px){  #h1 br{display:inline}.hr{gap:8px}.brand{gap:9px}.mark{width:40px;height:40px}.pill{padding:9px 13px}.wrap{padding-inline:18px}.count{display:grid;width:100%}.cu{padding:0 6px}.chip span{display:none}.top{padding-block:16px}.brand{letter-spacing:.06em;font-size:13px}}
 @media (max-width:400px){.brand{letter-spacing:.02em;font-size:12px;gap:7px}.mark{width:36px;height:36px}.mark img{width:21px;height:21px}.pill{padding:8px 11px;font-size:12px}.chip{padding:8px 10px}.hr{gap:6px}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,#h1 .w{opacity:1!important;transform:none!important}}
@@ -206,11 +206,11 @@ canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
 <section class="wrap sec" id="packages" aria-labelledby="pkh">
   <div class="sh"><h2 id="pkh">Gift <em>packages</em></h2><p>Browse ready-made gift packages for every occasion, choose one, and we deliver it to their door, with a card from you and, if you like, a digital gift to go with it.</p><span class="tag"><i></i>Packages coming soon</span></div>
   <div class="bento">
-    <figure class="pk p1"><img src="{% static 'home/pk_surprise.jpg' %}" alt="" loading="lazy"><figcaption>Surprise boxes</figcaption></figure>
-    <figure class="pk p2"><img src="{% static 'home/pk_chocolates.jpg' %}" alt="" loading="lazy"><figcaption>Chocolates &amp; treats</figcaption></figure>
-    <figure class="pk p3"><img src="{% static 'home/pk_teddy.jpg' %}" alt="" loading="lazy"><figcaption>Teddies &amp; flowers</figcaption></figure>
-    <figure class="pk p4"><img src="{% static 'home/pk_hamper.jpg' %}" alt="" loading="lazy"><figcaption>Hampers &amp; keepsakes</figcaption></figure>
-    <figure class="pk p5"><img src="{% static 'home/pk_fragrance.jpg' %}" alt="" loading="lazy"><figcaption>Fragrances</figcaption></figure>
+    <figure class="pk p1"><img src="{% static 'home/pk_surprise.jpg' %}" alt=""><figcaption>Surprise boxes</figcaption></figure>
+    <figure class="pk p2"><img src="{% static 'home/pk_chocolates.jpg' %}" alt=""><figcaption>Chocolates &amp; treats</figcaption></figure>
+    <figure class="pk p3"><img src="{% static 'home/pk_teddy.jpg' %}" alt=""><figcaption>Teddies &amp; flowers</figcaption></figure>
+    <figure class="pk p4"><img src="{% static 'home/pk_hamper.jpg' %}" alt=""><figcaption>Hampers &amp; keepsakes</figcaption></figure>
+    <figure class="pk p5"><img src="{% static 'home/pk_fragrance.jpg' %}" alt=""><figcaption>Fragrances</figcaption></figure>
   </div>
 </section>
 
