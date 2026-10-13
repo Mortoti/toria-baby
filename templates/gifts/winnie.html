@@ -203,7 +203,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 
 /* ---------- 8 close ---------- */
 .s-8 .inner{max-width:620px;text-align:left}
-.close-h{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(3rem,15vw,7rem);line-height:1;letter-spacing:-.03em;display:flex;align-items:center;flex-wrap:wrap;gap:0 .15em}
+.close-h{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(2.3rem,10.8vw,6rem);line-height:1;letter-spacing:-.03em;display:flex;align-items:center;flex-wrap:wrap;gap:0 .15em}
+.close-h>span:first-child{white-space:nowrap}
 .close-h em{font-style:italic;color:var(--ember);text-shadow:0 0 50px rgba(255,155,94,.4)}
 .beat{position:relative;display:inline-block;width:.6em;height:.6em}
 .beat svg{width:100%;height:100%;fill:var(--jollof);filter:drop-shadow(0 0 14px rgba(244,98,43,.7));animation:beat 1.5s ease-in-out infinite;position:relative;z-index:2}
@@ -242,6 +243,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
 .after{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,.9rem + 1.4vw,1.6rem);line-height:1.35;max-width:26em;opacity:0;transform:translateY(14px);transition:opacity 1s .5s,transform 1s .5s}
 .after.show{opacity:1;transform:none}
 .wishrow .again.gone{opacity:0!important;pointer-events:none;transition:opacity .4s}
+
+.s-honest{--sbg:radial-gradient(110% 90% at 50% 40%,#4a1630,#1c0a17 70%)}
+.s-wishes{--sbg:radial-gradient(110% 90% at 15% 70%,#3d1a1c,#1a0a14 70%)}
+.verse p.hl{position:relative;padding-left:34px}
+.verse p.hl::before{content:"";position:absolute;left:2px;top:.42em;width:19px;height:19px;background:var(--ember);clip-path:path('M9.5 17 C-4 7 3 -3 9.5 3 C16 -3 23 7 9.5 17Z')}
+.s-honest .verse p:not(.big):not(.soft){font-size:clamp(1.2rem,.95rem + 1.5vw,1.7rem)}
 /* ---------- chrome ---------- */
 .chip{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:70;display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:99px;border:1px solid rgba(232,192,122,.4);background:rgba(26,10,20,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--ink);font:600 13px var(--sans);cursor:pointer}
 .chip i{font-style:normal;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:rgba(232,192,122,.2);color:var(--gold);font-size:11px}
@@ -301,7 +308,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     <div class="inner">
       <p class="for pop" style="--d:.2s">For Winnifred, today</p>
       <h1 class="title"><span class="l1" data-letters>Happy birthday,</span><span class="l2" data-letters>Winnie.</span></h1>
-      <p class="sub kt pop" style="--d:2.4s;--base:2.4s">Today belongs to you, so I will try to be brief. <b>Swipe up slowly.</b> There is a lot to unwrap.</p>
+      <p class="sub kt pop" style="--d:2.4s;--base:2.4s">Today I wanted to say things properly. So I wrote them down, slowly, and put them where you can read them without laughing at me. <b>Swipe up.</b> There is a lot to unwrap.</p>
     </div>
   </section>
 
@@ -310,9 +317,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     <div class="bgph"><img src="{% static 'gifts/winnie/p1.jpg' %}" alt="Winnie"></div>
     <div class="pic-hearts" aria-hidden="true"><i style="left:14%;--j:0;--s:14px;--dx:24px"></i><i style="left:78%;--j:1;--s:20px;--c:#ff9b5e;--dx:-30px"></i><i style="left:40%;--j:2;--s:12px;--dx:18px"></i><i style="left:88%;--j:3;--s:16px;--dx:-14px"></i><i style="left:58%;--j:4;--s:22px;--c:#ffd0a8;--dx:30px"></i></div>
     <div class="inner"><div class="verse kt">
-      <p>One more year, and the world is lucky to have you for it.</p>
-      <p>Some people make a day brighter just by being in it. You are one of them.</p>
-      <p>And today, of all days, I want you to know that.</p>
+      <p>I picked this picture because of how you look at the camera.</p>
+      <p>Calm. A little curious. Like you know something the rest of us are still working out.</p>
+      <p>I could tell you that you are beautiful, and it would be true. It would also be the smallest thing I could say about you.</p>
       <p class="big">Happy birthday, Winnie. <em>You are the gift.</em></p>
     </div></div>
   </section>
@@ -322,9 +329,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     <div class="glow" style="--gx:80%;--gy:80%;--g:rgba(246,169,188,.22)"></div>
     <div class="has" aria-hidden="true"><span style="--j:0">ha</span><span style="--j:1">ha</span><span style="--j:2">ha</span></div>
     <div class="inner" style="max-width:620px"><div class="verse kt">
-      <p>Here is a small secret, Winnie.</p>
+      <p>Here is something I have not said in a way that stays.</p>
       <p>Every time I tell you how I feel, you laugh.</p>
-      <p class="soft">I love that laugh. So today there is no pressure and no answer needed. Just a birthday wish that happens to be completely true.</p>
+      <p class="soft">I love that laugh. I really do. But somewhere between the jokes and the flirting, I want you to know that part of me was never joking.</p>
+      <p class="soft">Not for an answer. Just so it is on the record.</p>
       <p class="big">Laugh if you want. <em>I mean it anyway.</em></p>
     </div>
     <svg class="pen" viewBox="0 0 360 22" preserveAspectRatio="none" aria-hidden="true"><path d="M4 14C60 4 120 20 180 10S300 6 356 12"/></svg>
@@ -344,7 +352,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       </div>
       <div class="verse kt" style="--base:1.4s">
         <p>Eight seconds of you.</p>
-        <p class="soft">I could watch it again and again. At this point it should be in the books as a recurring expense.</p>
+        <p class="soft">You move like you have nowhere else to be, and I like that about you. I could watch it on repeat. In the books, that is a recurring expense.</p>
         <p class="big">Worth every <em>pesewa.</em></p>
         <div class="eq pop" style="--d:3s" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>
@@ -352,6 +360,33 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
   </section>
 
   <!-- 4 -->
+<section class="slide s-honest">
+    <div class="glow" style="--gx:50%;--gy:45%;--g:rgba(246,169,188,.26)"></div>
+    <div class="inner" style="max-width:640px;text-align:center">
+      <div class="verse kt" style="gap:clamp(14px,3svh,26px)">
+        <p class="soft">If I am honest</p>
+        <p>I like you more than I know how to say lightly.</p>
+        <p>Every time I try to be smooth, it comes out as a joke. So here it is, plain.</p>
+        <p>I like the way you talk. I like the way you laugh. I like being the person you flirt with, even when I am not sure how much of it you mean.</p>
+        <p class="big">I mean it. <em>Every bit.</em></p>
+      </div>
+    </div>
+  </section>
+  <!-- 5 -->
+<section class="slide s-wishes">
+    <div class="glow" style="--gx:20%;--gy:60%;--g:rgba(232,192,122,.2)"></div>
+    <div class="inner" style="max-width:640px">
+      <div class="verse kt wl">
+        <p class="big">So, birthday wishes. <em>The real ones.</em></p>
+        <p class="hl">I wish you gentle mornings.</p>
+        <p class="hl">I wish you people who listen the first time you speak.</p>
+        <p class="hl">I wish you laughter, and not only at my expense.</p>
+        <p class="hl">I wish you rest, a full plate, and nothing to prove to anybody.</p>
+        <p class="hl">And I wish you a year where you finally see yourself the way I see you.</p>
+      </div>
+    </div>
+  </section>
+  <!-- 6 -->
   <section class="slide s-4">
     <div class="glow" style="--gx:50%;--gy:20%;--g:rgba(232,192,122,.18)"></div>
     <div class="inner">
@@ -365,8 +400,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
         <div class="rows">
           <div class="row" style="--r:0"><span>Happiness</span><i></i><b>paid in full</b></div>
           <div class="row" style="--r:1"><span>Good health</span><i></i><b>fully funded</b></div>
-          <div class="row" style="--r:2"><span>Peace of mind</span><i></i><b>no limit</b></div>
-          <div class="row" style="--r:3"><span>Laughter</span><i></i><b>every single day</b></div>
+          <div class="row" style="--r:2"><span>Laughter</span><i></i><b>every single day</b></div>
+          <div class="row" style="--r:3"><span>Someone who listens</span><i></i><b>always available</b></div>
           <div class="row" style="--r:4"><span>Jollof</span><i></i><b>unlimited</b></div>
           <div class="row total" style="--r:5"><span>Balance</span><i></i><b>your best year yet</b></div>
         </div>
@@ -375,7 +410,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div>
   </section>
 
-  <!-- 5 -->
+  <!-- 7 -->
   <section class="slide s-photo r s-5">
     <div class="bgph"><img src="{% static 'gifts/winnie/p2.jpg' %}" alt="Winnie in a bonnet, resting her face in her hands" style="object-position:50% 30%"></div>
     <svg class="moon" viewBox="0 0 100 100" aria-hidden="true"><path d="M62 8A42 42 0 1 0 92 66 34 34 0 0 1 62 8z"/></svg>
@@ -389,7 +424,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div></div>
   </section>
 
-  <!-- 6 -->
+  <!-- 8 -->
 <section class="slide s-wish">
     <div class="glow" style="--gx:50%;--gy:55%;--g:rgba(255,155,94,.35)"></div>
     <div class="inner">
@@ -415,7 +450,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       <p class="after" id="after">Whatever you wished for, I hope it comes true. And if I am in it, even better.</p></div>
     </div>
   </section>
-  <!-- 7 -->
+  <!-- 9 -->
   <section class="slide s-6">
     <div class="glow" style="--gx:50%;--gy:35%;--g:rgba(244,98,43,.38)"></div>
     <div class="inner">
@@ -428,7 +463,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div>
   </section>
 
-  <!-- 8 -->
+  <!-- 10 -->
   <section class="slide s-7">
     <div class="glow" style="--gx:50%;--gy:70%;--g:rgba(244,98,43,.4)"></div>
     <div class="inner">
@@ -450,7 +485,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     </div>
   </section>
 
-  <!-- 9 -->
+  <!-- 11 -->
   <section class="slide s-8">
     <div class="glow" style="--gx:15%;--gy:20%;--g:rgba(246,169,188,.26)"></div>
     <div class="balloons" aria-hidden="true"><i style="--x:10%;--c:#f4622b;--d:2s;--t:12s"></i><i style="--x:30%;--c:#f6a9bc;--d:4s;--t:13s"></i><i style="--x:74%;--c:#e8c07a;--d:1s;--t:11s"></i><i style="--x:90%;--c:#e8485f;--d:3s;--t:14s"></i></div>
@@ -459,12 +494,14 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
       <div class="verse kt" style="--base:1.8s">
         <p>I hope this year is gentle with you, and generous.</p>
         <p>I hope you laugh until your face hurts, rest when you need to, and never doubt how loved you are.</p>
-        <p class="soft">And if you ever want company for any of it, you know where to find me.</p>
+        <p class="soft">You are easy to like, and I am finding you very hard to stop liking.</p>
+        <p class="soft">If you ever want company for any of it, I am right here.</p>
       </div>
       <p class="sign">Yours, the one who keeps the books<small>Financial Secretary, NOLAP</small></p>
       <button class="again" id="again" type="button">&#8634;&nbsp; Read it again</button>
     </div>
   </section>
+
 
 </main>
 
@@ -577,10 +614,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opa
     timers.forEach(clearTimeout);timers=[];
     if(i===3){later(playV,900)}else{v.pause()}
     if(i===0){later(function(){burst(.5,.5)},1500)}
-    if(i===6){resetWish()}
-    if(i===9){later(function(){burst(.5,.4)},1600)}
-    if(i===4){later(function(){rain('coins')},1200);later(function(){var s=document.getElementById('sheet');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake')},5650)}
-    if(i===8){later(function(){burst()},3500)}
+    if(i===8){resetWish()}
+    if(i===11){later(function(){burst(.5,.4)},1600)}
+    if(i===6){later(function(){rain('coins')},1200);later(function(){var s=document.getElementById('sheet');s.classList.remove('shake');void s.offsetWidth;s.classList.add('shake')},5650)}
+    if(i===10){later(function(){burst()},3500)}
   }
   snd.addEventListener('click',function(){var on=v.muted;v.muted=!on;snd.setAttribute('aria-pressed',String(on));snd.innerHTML=on?'&#9835;&nbsp; Sound on':'&#9835;&nbsp; Tap for sound';if(v.paused)playV();duck=on;if(duck){if(playing)fadeTo(0)}else if(wanted&&playing){fadeTo(.8)}});
 
