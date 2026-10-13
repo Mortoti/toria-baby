@@ -1,0 +1,229 @@
+{% load static %}<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="NOLAP GIFTS turns your photos, videos, words and favourite song into a personal gift. Launching 7 November 2026.">
+<meta name="theme-color" content="#f9cdd9">
+<meta property="og:title" content="NOLAP GIFTS: coming soon">
+<meta property="og:description" content="A gift made just for them. Launching 7 November 2026.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="{% static 'home/favicon.png' %}">
+<link rel="apple-touch-icon" href="{% static 'home/apple-touch-icon.png' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>NOLAP GIFTS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap">
+<style>
+/* Concept: a soft clay launch page. Raspberry logo tile, pink clay cards, a real iPhone showing the gift app, a live countdown to 7 November 2026. Single committed light look. */
+:root{
+  --bg:#f9cdd9; --bg2:#fde3ea; --hi:#fff6f9; --berry:#b83b6c; --berry2:#d2587f; --hot:#ee6f93; --ink:#6a1b40; --lav:#8f78d9;
+  --font:'Poppins',system-ui,sans-serif; --hand:'Caveat','Segoe Print',cursive;
+  --raise:.7rem .9rem 2rem rgba(190,80,120,.3),-.6rem -.6rem 1.6rem rgba(255,255,255,.95);
+  --ease:cubic-bezier(.2,.8,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,var(--bg2),var(--bg) 60%,#f4b9cb);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.6;overflow-x:hidden;min-height:100vh}
+h1,h2,h3,p{margin:0}
+canvas#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.contour{position:fixed;right:-18vw;top:-18vw;width:60vw;height:60vw;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 1.9vw,rgba(214,100,140,.28) 1.9vw calc(1.9vw + 1px));-webkit-mask:radial-gradient(circle,#000 30%,transparent 72%);mask:radial-gradient(circle,#000 30%,transparent 72%);animation:spin 120s linear infinite;z-index:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.wrap{position:relative;z-index:1;max-width:1180px;margin-inline:auto;padding-inline:20px}
+
+/* header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:700;letter-spacing:.14em;font-size:15px}
+.mark{width:46px;height:46px;border-radius:14px;background:linear-gradient(160deg,#cf5580,#a52f5c);display:grid;place-items:center;box-shadow:.4rem .5rem 1.1rem rgba(140,30,80,.4),inset 0 1px 0 rgba(255,255,255,.35)}
+.mark img{width:26px;height:26px;display:block}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:600;font-size:13px;letter-spacing:.06em;white-space:nowrap}
+.pill i{width:9px;height:9px;border-radius:50%;background:var(--hot);box-shadow:0 0 0 0 rgba(238,111,147,.6);animation:ping 1.8s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 10px rgba(238,111,147,0)}100%{box-shadow:0 0 0 0 rgba(238,111,147,0)}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px;align-items:center;padding-block:28px 56px}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--hot);margin-bottom:14px}
+h1{font-weight:700;font-size:clamp(2.4rem,5.4vw,4.4rem);line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
+h1 em{font-style:normal;color:var(--hot)}
+.lede{margin-top:20px;max-width:34rem;font-size:clamp(1rem,1.5vw,1.15rem);color:rgba(106,27,64,.8)}
+.rv{opacity:0;transform:translateY(22px);animation:in .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+@keyframes in{to{opacity:1;transform:none}}
+.w{display:inline-block;opacity:0;transform:translateY(.6em) rotate(3deg);animation:wd .8s var(--ease) forwards;animation-delay:calc(.15s + var(--i)*.09s)}
+@keyframes wd{to{opacity:1;transform:none}}
+
+.count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:30px;max-width:30rem}
+.tile{border-radius:22px;padding:16px 8px 12px;text-align:center;background:linear-gradient(160deg,#cf5580,#a52f5c);color:#fff;box-shadow:.5rem .7rem 1.4rem rgba(140,30,80,.38),inset 0 1px 0 rgba(255,255,255,.3);position:relative;overflow:hidden}
+.tile::before{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 6px,rgba(255,255,255,.14) 6px 7px)}
+.tile b{position:relative;display:block;font-weight:600;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.1;font-variant-numeric:tabular-nums}
+.tile span{position:relative;font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.85}
+.tile b.tick{animation:tick .4s var(--ease)}
+@keyframes tick{0%{transform:translateY(-8px);opacity:.4}100%{transform:none;opacity:1}}
+.when{margin-top:18px;font-family:var(--hand);font-weight:700;font-size:1.7rem;color:var(--berry2);line-height:1.1}
+.live{display:none;margin-top:30px;padding:18px 22px;border-radius:22px;background:var(--hi);box-shadow:var(--raise);font-weight:600;font-size:1.2rem}
+
+/* phone */
+.stage{display:grid;place-items:center;position:relative}
+.stage::before{content:"";position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(238,111,147,.55),transparent 68%);filter:blur(10px);animation:glow 5s ease-in-out infinite alternate}
+@keyframes glow{to{transform:scale(1.15);opacity:.7}}
+.phone{position:relative;height:min(74vh,700px);aspect-ratio:736/1492;animation:float 6s ease-in-out infinite;filter:drop-shadow(0 28px 38px rgba(110,20,60,.4))}
+@keyframes float{50%{transform:translateY(-12px) rotate(-1deg)}}
+.screen{position:absolute;left:5.6%;top:2.6%;width:88.8%;height:94.7%;overflow:hidden;container-type:size;background:#fff6f9}
+.bezel{position:absolute;inset:0;width:100%;height:100%;z-index:6;pointer-events:none}
+.float{position:absolute;z-index:7;padding:10px 16px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:600;font-size:13px;white-space:nowrap;animation:bob 5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+/* demo slot: a 20 second recording of a real gift plays here */
+.screen img.poster,.screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.screen video{opacity:0;transition:opacity .5s;background:#000}
+.screen.live video{opacity:1}
+.play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:6px;border:0;cursor:pointer;padding:18px 22px;border-radius:26px;background:rgba(255,246,249,.94);box-shadow:var(--raise);color:var(--ink);font-family:var(--font);transition:transform .4s var(--ease),opacity .4s}
+.play:hover{transform:translate(-50%,-50%) scale(1.05)}
+.play:focus-visible{outline:3px solid var(--berry);outline-offset:3px}
+.play b{width:58px;height:58px;border-radius:50%;background:linear-gradient(160deg,#f58aa9,#e0527c);color:#fff;display:grid;place-items:center;font-size:22px;padding-left:4px;box-shadow:.3rem .4rem .9rem rgba(190,60,100,.45);animation:ping2 2s infinite}
+@keyframes ping2{70%{box-shadow:.3rem .4rem .9rem rgba(190,60,100,.45),0 0 0 14px rgba(238,111,147,0)}}
+.play span{font-weight:600;font-size:15px}.play small{font-size:11px;opacity:.65;letter-spacing:.04em}
+.screen.playing .play{opacity:0;pointer-events:none}
+/* occasions */
+.occ{position:relative;z-index:1;padding-block:10px 40px}
+.occ h2{text-align:center;font-weight:600;font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--hot);margin-bottom:18px}
+.belt{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.track{display:flex;gap:14px;width:max-content;animation:belt 36s linear infinite}
+.track span{padding:12px 22px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:500;white-space:nowrap}
+@keyframes belt{to{transform:translateX(-50%)}}
+
+/* features */
+.feat{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-block:20px 60px}
+.card{border-radius:30px;padding:28px 26px;background:linear-gradient(145deg,#fff,#fbdde6);box-shadow:var(--raise);transition:transform .5s var(--ease)}
+.card:hover{transform:translateY(-6px)}
+.card .n{width:52px;height:52px;border-radius:50%;background:linear-gradient(160deg,#cf5580,#a52f5c);color:#fff;display:grid;place-items:center;font-size:22px;margin-bottom:16px;box-shadow:.3rem .4rem .9rem rgba(140,30,80,.35)}
+.card h3{font-weight:600;font-size:1.25rem;margin-bottom:6px}
+.card p{font-size:.95rem;color:rgba(106,27,64,.78)}
+
+/* footer */
+.foot{position:relative;z-index:1;padding:34px 20px 44px;text-align:center}
+.pow{display:inline-flex;align-items:center;gap:12px;padding:12px 22px 12px 14px;border-radius:99px;background:var(--hi);box-shadow:var(--raise);font-weight:500;font-size:14px}
+.pow .mark{width:36px;height:36px;border-radius:11px}.pow .mark img{width:20px;height:20px}
+.pow b{font-weight:700;letter-spacing:.1em}
+.copy{margin-top:16px;font-size:13px;color:rgba(106,27,64,.65)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr);gap:24px;padding-top:8px}
+  .copy-col{text-align:center}.lede{margin-inline:auto}.count{margin-inline:auto}
+  .phone{height:min(68vh,620px)}
+  .feat{grid-template-columns:minmax(0,1fr)}
+  .float{display:none}
+  .pow{padding:10px 18px 10px 12px;font-size:13px;text-align:left}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}.rv,.w{opacity:1;transform:none}.scr:nth-child(2){opacity:1}.track{flex-wrap:wrap;width:auto;justify-content:center}}
+</style>
+</head>
+<body>
+
+
+<canvas id="petals"></canvas><div class="contour"></div>
+
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="mark"><img src="{% static 'home/logo.png' %}" alt="NOLAP logo"></span>NOLAP GIFTS</div>
+    <span class="pill"><i></i>Coming soon</span>
+  </header>
+
+  <main class="hero">
+    <section class="copy-col">
+      <p class="eyebrow rv" style="--d:.05s">Launching 7 November 2026</p>
+      <h1 id="h1">A gift made <em>just for them.</em></h1>
+      <p class="lede rv" style="--d:.9s">NOLAP GIFTS turns your photos, videos, words and favourite song into a personal gift. Pick a style, make it yours, and share it with one private link.</p>
+
+      <div class="count rv" id="count" style="--d:1.1s" aria-label="Countdown to launch">
+        <div class="tile"><b id="cd">0</b><span>days</span></div>
+        <div class="tile"><b id="ch">0</b><span>hours</span></div>
+        <div class="tile"><b id="cm">0</b><span>mins</span></div>
+        <div class="tile"><b id="cs">0</b><span>secs</span></div>
+      </div>
+      <div class="live" id="live">We are live. Welcome to NOLAP GIFTS.</div>
+      <p class="when rv" style="--d:1.3s">Saturday, 7 November 2026</p>
+    </section>
+
+    <section class="stage rv" style="--d:.5s" aria-label="A real gift, shown in a 20 second demo">
+      <div class="phone">
+        <div class="screen" id="screen">
+          <img class="poster" src="{% static 'home/poster.jpg' %}" alt="A NOLAP GIFTS gift on a phone">
+          <video id="demo" src="{% static 'home/demo.mp4' %}" muted loop playsinline preload="metadata"></video>
+          <button class="play" id="playdemo" type="button" aria-label="Watch a 20 second demo"><b>&#9654;</b><span>Watch a real gift</span><small>20 seconds, with sound</small></button>
+        </div>
+        <img class="bezel" src="{% static 'gifts/iphone.png' %}" alt="" aria-hidden="true">
+      </div>
+    </section>
+  </main>
+</div>
+
+<section class="occ" aria-label="Occasions">
+  <h2>For every moment that matters</h2>
+  <div class="belt"><div class="track" id="track"></div></div>
+</section>
+
+<div class="wrap">
+  <section class="feat">
+    <div class="card rv" style="--d:.1s"><div class="n">1</div><h3>Pick a style</h3><p>Choose a gift style made for your moment. Every style looks and feels different, from a message to a surprise.</p></div>
+    <div class="card rv" style="--d:.2s"><div class="n">2</div><h3>Make it yours</h3><p>Add your photos, videos and words, and choose the song that means something to you both.</p></div>
+    <div class="card rv" style="--d:.3s"><div class="n">3</div><h3>Share one private link</h3><p>Send it on WhatsApp. Only the person you share it with can open it, and it never shows up in search.</p></div>
+  </section>
+</div>
+
+<footer class="foot">
+  <div class="pow"><span class="mark"><img src="{% static 'home/logo.png' %}" alt=""></span><span>Powered by <b>NOLAP TECHNOLOGIES</b></span></div>
+  <p class="copy">&copy; 2026 NOLAP TECHNOLOGIES. All rights reserved.</p>
+</footer>
+
+<script>
+(function(){
+  /* headline words */
+  var h=document.getElementById('h1'),i=0,out='';
+  h.innerHTML=h.innerHTML.replace(/<em>(.*?)<\/em>/,function(m,t){return t.split(' ').map(function(w){return '<em>'+w+'</em>'}).join(' ')});
+  [].forEach.call(h.childNodes,function(n){});
+  var html=h.innerHTML.split(/(<em>.*?<\/em>|\s+)/).filter(function(x){return x&&!/^\s+$/.test(x)}).map(function(x){return '<span class="w" style="--i:'+(i++)+'">'+x+'</span>'}).join(' ');
+  h.innerHTML=html;
+
+  /* demo recording: plays only if demo.mp4 exists */
+  var sc=document.getElementById('screen'),v=document.getElementById('demo'),pb=document.getElementById('playdemo'),ready=false;
+  v.addEventListener('loadeddata',function(){ready=true});
+  pb.addEventListener('click',function(){if(!ready)return;sc.classList.add('live','playing');v.muted=false;v.currentTime=0;var p=v.play();if(p&&p.catch)p.catch(function(){v.muted=true;v.play()})});
+  v.addEventListener('click',function(){if(v.paused){v.play()}else{v.pause()}});
+  /* occasions belt */
+  var occ=['Anniversary','Birthday','Valentine’s Day','Apology','Proposal','Mother’s Day','Graduation','New baby','Wedding','Just because'];
+  var t=document.getElementById('track');t.innerHTML=occ.concat(occ).map(function(o){return '<span>'+o+'</span>'}).join('');
+
+  /* countdown to 7 November 2026, local time */
+  var target=new Date(2026,10,7,0,0,0).getTime();
+  var el={d:document.getElementById('cd'),h:document.getElementById('ch'),m:document.getElementById('cm'),s:document.getElementById('cs')};
+  function set(e,v){var s=String(v);if(e.textContent!==s){e.textContent=s;e.classList.remove('tick');void e.offsetWidth;e.classList.add('tick')}}
+  function upd(){
+    var ms=target-Date.now();
+    if(ms<=0){document.getElementById('count').style.display='none';document.getElementById('live').style.display='block';return}
+    var s=Math.floor(ms/1000);
+    set(el.d,Math.floor(s/86400));set(el.h,Math.floor(s%86400/3600));set(el.m,Math.floor(s%3600/60));set(el.s,s%60);
+  }
+  upd();setInterval(upd,1000);
+
+  /* falling petals */
+  var cv=document.getElementById('petals'),cx=cv.getContext('2d'),P=[],W=0,H=0,dpr=Math.min(devicePixelRatio||1,2);
+  function rs(){W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;cx.setTransform(dpr,0,0,dpr,0,0)}
+  rs();addEventListener('resize',rs);
+  var cols=['#f4a3bb','#e2658b','#fbc6d4','#ffffff','#d2587f'];
+  function mk(top){return{x:Math.random()*W,y:top?-20:Math.random()*H,vx:(Math.random()-.5)*.4,vy:.5+Math.random()*.8,s:6+Math.random()*9,r:Math.random()*6,vr:(Math.random()-.5)*.04,f:Math.random()*6,vf:.03+Math.random()*.03,c:cols[Math.random()*cols.length|0]}}
+  for(var k=0;k<26;k++)P.push(mk(false));
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function loop(){
+    cx.clearRect(0,0,W,H);
+    for(var j=0;j<P.length;j++){var p=P[j];if(!reduce){p.x+=p.vx+Math.sin(p.y*.012+p.f)*.3;p.y+=p.vy;p.r+=p.vr;p.f+=p.vf}
+      if(p.y>H+20)P[j]=mk(true);
+      cx.save();cx.globalAlpha=.55;cx.fillStyle=p.c;cx.translate(p.x,p.y);cx.rotate(p.r);cx.scale(1,Math.abs(Math.cos(p.f))*.7+.3);var s=p.s;
+      cx.beginPath();cx.moveTo(0,-s);cx.bezierCurveTo(s*.9,-s*.5,s*.7,s*.8,0,s);cx.bezierCurveTo(-s*.7,s*.8,-s*.9,-s*.5,0,-s);cx.fill();cx.restore();}
+    requestAnimationFrame(loop);
+  }
+  loop();
+})();
+</script>
+
+</body>
+</html>

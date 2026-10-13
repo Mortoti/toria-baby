@@ -8,7 +8,7 @@ GIFTS = {
 
 
 def home(request):
-    return HttpResponse("NOLAP GIFTS", content_type="text/plain")
+    return render(request, "home.html")
 
 
 def robots(request):
